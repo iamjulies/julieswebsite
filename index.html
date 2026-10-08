@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Julies (iamjulies) — Sư Phạm & Công Nghệ</title>
+  <meta name="description" content="Website cá nhân của Julies (Nông Đức Hạo) — Sinh viên Sư phạm Hóa học dạy bằng tiếng Anh K76 ĐHSPHN & Nhà phát triển EdTech. Nơi chia sẻ lộ trình củng cố Hóa học Cấp 2-3 hiểu bản chất và các dự án phần mềm như VocaFlow.">
+  <meta name="keywords" content="Julies, iamjulies, Nông Đức Hạo, Sư phạm Hóa học tiếng Anh, ĐHSPHN, K76 HNUE, Danh pháp IUPAC, VocaFlow, EdTech, Dạy Hóa hiểu bản chất">
+  <meta name="author" content="Julies (Nông Đức Hạo)">
+
+  <!-- OpenGraph / Facebook / Zalo Preview -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://iamjulies.me/">
+  <meta property="og:title" content="Julies (iamjulies) — Sư Phạm Hóa Học & Sáng Tạo Công Nghệ">
+  <meta property="og:description" content="Lộ trình củng cố Hóa học Cấp 2-3 hiểu bản chất, Bảng tra cứu IUPAC tương tác & Hệ sinh thái phần mềm giáo dục VocaFlow.">
+  <meta property="og:image" content="https://api.iconify.design/lucide:atom.svg?color=%2310b981">
+
+  <!-- Favicon & PWA -->
+  <link rel="icon" href="https://api.iconify.design/lucide:sparkles.svg?color=%2310b981" type="image/svg+xml">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#10b981">
+
+  <!-- Tailwind CSS CDN with configuration -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              teach: '#10b981',
+              teachDark: '#059669',
+              tech: '#6366f1',
+              techDark: '#4f46e5',
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            heading: ['"Outfit"', '"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300 min-h-screen flex flex-col selection:bg-emerald-500 selection:text-white">
+
+  <!-- BACKGROUND GLOW EFFECTS -->
+  <div class="fixed top-0 left-0 -translate-x-1/3 -translate-y-1/3 mesh-glow-teach"></div>
+  <div class="fixed bottom-0 right-0 translate-x-1/3 translate-y-1/3 mesh-glow-tech"></div>
+
+  <!-- HEADER NAVIGATION -->
+  <header class="sticky top-0 z-40 w-full glass-panel border-b border-slate-200/80 dark:border-slate-800/80 transition-all duration-300">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      
+      <!-- LOGO / BRAND -->
+      <a href="#home" data-route="home" class="flex items-center gap-2.5 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-500 to-indigo-600 flex items-center justify-center text-white shadow-md shadow-emerald-500/20 group-hover:scale-105 transition-transform">
+          <span class="text-xl">✨</span>
+        </div>
+        <div>
+          <div class="font-heading font-extrabold text-lg text-slate-900 dark:text-white flex items-center gap-1.5 leading-none">
+            iamjulies<span class="text-emerald-500">.me</span>
+          </div>
+          <span class="text-[10px] uppercase font-mono tracking-wider text-slate-400 font-semibold">Pedagogy & Tech</span>
+        </div>
+      </a>
+
+      <!-- DESKTOP NAV TABS -->
+      <nav class="hidden md:flex items-center gap-1 bg-slate-100/80 dark:bg-slate-900/80 p-1.5 rounded-full border border-slate-200 dark:border-slate-800 text-sm font-medium">
+        <a href="#home" data-route="home" class="px-4 py-1.5 rounded-full text-slate-600 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors flex items-center gap-1.5">
+          <span>🏠</span> Trang Chủ
+        </a>
+        <a href="#teaching" data-route="teaching" class="px-4 py-1.5 rounded-full text-slate-600 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors flex items-center gap-1.5">
+          <span>📚</span> Góc Học Thuật (Hóa Học)
+        </a>
+        <a href="#projects" data-route="projects" class="px-4 py-1.5 rounded-full text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors flex items-center gap-1.5">
+          <span>💻</span> Dự Án Số (Apps)
+        </a>
+        <a href="#about" data-route="about" class="px-4 py-1.5 rounded-full text-slate-600 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors flex items-center gap-1.5">
+          <span>✨</span> Về Julies
+        </a>
+      </nav>
+
+      <!-- ACTIONS (Theme Toggle & CTA) -->
+      <div class="flex items-center gap-2.5">
+        <button class="theme-toggle-btn p-2 rounded-xl text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-200/60 dark:hover:bg-slate-800/60 transition-colors" title="Chuyển chế độ Sáng/Tối">
+          <span class="dark:hidden text-lg">🌙</span>
+          <span class="hidden dark:inline text-lg">☀️</span>
+        </button>
+
+        <a href="#teaching" data-route="teaching" class="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-xl font-semibold text-xs text-white bg-emerald-600 hover:bg-emerald-500 dark:bg-emerald-500 dark:hover:bg-emerald-400 shadow-sm shadow-emerald-500/30 transition-all hover:scale-[1.02]">
+          <span>📝</span> Đăng Ký Học Thử
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- MOBILE BOTTOM NAVIGATION (Quick Bar for Mobile Users) -->
+  <div class="md:hidden fixed bottom-0 left-0 right-0 z-40 glass-panel border-t border-slate-200 dark:border-slate-800 px-3 py-2 flex items-center justify-around text-xs safe-bottom">
+    <a href="#home" data-route="home" class="flex flex-col items-center gap-1 py-1 text-slate-600 dark:text-slate-400">
+      <span class="text-base">🏠</span>
+      <span>Home</span>
+    </a>
+    <a href="#teaching" data-route="teaching" class="flex flex-col items-center gap-1 py-1 text-slate-600 dark:text-slate-400">
+      <span class="text-base">📚</span>
+      <span>Học Thuật</span>
+    </a>
+    <a href="#projects" data-route="projects" class="flex flex-col items-center gap-1 py-1 text-slate-600 dark:text-slate-400">
+      <span class="text-base">💻</span>
+      <span>Dự Án Số</span>
+    </a>
+    <a href="#about" data-route="about" class="flex flex-col items-center gap-1 py-1 text-slate-600 dark:text-slate-400">
+      <span class="text-base">✨</span>
+      <span>Về Julies</span>
+    </a>
+  </div>
+
+  <!-- MAIN CONTENT CONTAINER -->
+  <main class="flex-grow max-w-6xl mx-auto px-4 sm:px-6 py-8 md:py-12 w-full pb-20 md:pb-12">
+
+    <!-- ================================================================= -->
+    <!-- SCREEN 1: TRANG CHỦ (HOME - GATEWAY) -->
+    <!-- ================================================================= -->
+    <section id="screen-home" class="tab-screen active space-y-12">
+      
+      <!-- HERO HEADER -->
+      <div class="text-center max-w-3xl mx-auto pt-4 md:pt-8 space-y-6">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-semibold font-mono">
+          <span>🔬 Sinh Viên K76 Sư Phạm Hóa Học Tiếng Anh — ĐHSPHN</span>
+          <span>•</span>
+          <span>💻 EdTech Creator</span>
+        </div>
+
+        <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight font-heading">
+          Nơi tư duy <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-500 dark:from-emerald-400 dark:to-teal-300">Sư phạm tâm huyết</span> đồng hành cùng <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-500 dark:from-indigo-400 dark:to-violet-300">Công nghệ số</span>.
+        </h1>
+
+        <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl mx-auto">
+          Chào bạn, mình là <strong>Julies (Nông Đức Hạo)</strong>. Là một người trẻ yêu thích khoa học Hóa học và công nghệ, mình mong muốn được đồng hành cùng các bạn học sinh củng cố nền tảng kiến thức Hóa học Cấp 2-3 theo hướng hiểu bản chất và tự nhiên nhất.
+        </p>
+      </div>
+
+      <!-- DUAL GATEWAY CARDS (2 THẾ GIỚI) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
+        
+        <!-- CARD 1: THẾ GIỚI GIẢNG DẠY -->
+        <div class="glass-card rounded-3xl p-8 border border-emerald-500/20 hover:border-emerald-500/50 flex flex-col justify-between relative overflow-hidden group bg-gradient-to-b from-white to-emerald-50/30 dark:from-slate-900 dark:to-emerald-950/20">
+          <div class="absolute -right-6 -bottom-6 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl group-hover:scale-150 transition-transform"></div>
+          
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 flex items-center justify-center text-2xl mb-6 shadow-inner">
+              📚
+            </div>
+            
+            <span class="text-xs font-mono font-bold tracking-wider text-emerald-600 dark:text-emerald-400 uppercase">Dành Cho Phụ Huynh & Học Sinh</span>
+            <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white font-heading mt-1 mb-3">
+              Góc Học Thuật & Đồng Hành
+            </h2>
+
+            <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
+              Không gian chia sẻ lộ trình củng cố Hóa học Cấp 2-3 chuẩn GDPT 2018, định hướng học hiểu bản chất liên kết thay vì học vẹt, bảng tra cứu danh pháp IUPAC tương tác và form đăng ký học thử.
+            </p>
+
+            <div class="flex flex-wrap gap-2 mb-8">
+              <span class="text-xs px-2.5 py-1 rounded-lg bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 font-medium">🌱 Học hiểu bản chất</span>
+              <span class="text-xs px-2.5 py-1 rounded-lg bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 font-medium">🎯 Lộ trình Cấp 2-3</span>
+              <span class="text-xs px-2.5 py-1 rounded-lg bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 font-medium">🧪 Bảng IUPAC tương tác</span>
+            </div>
+          </div>
+
+          <a href="#teaching" data-route="teaching" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl font-bold text-sm text-white bg-emerald-600 hover:bg-emerald-500 shadow-lg shadow-emerald-600/25 transition-all group-hover:gap-3">
+            <span>Khám Phá Góc Học Thuật</span>
+            <span>→</span>
+          </a>
+        </div>
+
+        <!-- CARD 2: THẾ GIỚI DỰ ÁN SỐ -->
+        <div class="glass-card rounded-3xl p-8 border border-indigo-500/20 hover:border-indigo-500/50 flex flex-col justify-between relative overflow-hidden group bg-gradient-to-b from-white to-indigo-50/30 dark:from-slate-900 dark:to-indigo-950/20">
+          <div class="absolute -right-6 -bottom-6 w-32 h-32 bg-indigo-500/10 rounded-full blur-2xl group-hover:scale-150 transition-transform"></div>
+
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20 flex items-center justify-center text-2xl mb-6 shadow-inner">
+              💻
+            </div>
+
+            <span class="text-xs font-mono font-bold tracking-wider text-indigo-600 dark:text-indigo-400 uppercase">Dành Cho Cộng Đồng & Người Học</span>
+            <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white font-heading mt-1 mb-3">
+              Lab Dự Án Số & Apps
+            </h2>
+
+            <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
+              Nơi trưng bày các ứng dụng phần mềm do Julies tự tay thiết kế và lập trình — tiêu biểu là <strong>VocaFlow</strong> ứng dụng luyện từ vựng phát âm AI, cùng các mini-tools Hóa học trực quan.
+            </p>
+
+            <div class="flex flex-wrap gap-2 mb-8">
+              <span class="text-xs px-2.5 py-1 rounded-lg bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 font-medium">🚀 VocaFlow v1.0-0</span>
+              <span class="text-xs px-2.5 py-1 rounded-lg bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 font-medium">🎙️ Azure Speech & Gemini</span>
+              <span class="text-xs px-2.5 py-1 rounded-lg bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 font-medium">⚡ Offline-First PWA</span>
+            </div>
+          </div>
+
+          <a href="#projects" data-route="projects" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl font-bold text-sm text-white bg-indigo-600 hover:bg-indigo-500 shadow-lg shadow-indigo-600/25 transition-all group-hover:gap-3">
+            <span>Trải Nghiệm Dự Án Số</span>
+            <span>→</span>
+          </a>
+        </div>
+
+      </div>
+
+      <!-- STATS & HIGHLIGHTS -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-6">
+        <div class="glass-card rounded-2xl p-5 text-center">
+          <div class="text-2xl sm:text-3xl font-extrabold font-heading text-emerald-600 dark:text-emerald-400">ĐHSPHN</div>
+          <div class="text-xs text-slate-500 dark:text-slate-400 mt-1 font-medium">K76 Sư phạm Hóa tiếng Anh</div>
+        </div>
+        <div class="glass-card rounded-2xl p-5 text-center">
+          <div class="text-2xl sm:text-3xl font-extrabold font-heading text-indigo-600 dark:text-indigo-400">v1.0-0</div>
+          <div class="text-xs text-slate-500 dark:text-slate-400 mt-1 font-medium">Tác giả ứng dụng VocaFlow</div>
+        </div>
+        <div class="glass-card rounded-2xl p-5 text-center">
+          <div class="text-2xl sm:text-3xl font-extrabold font-heading text-emerald-600 dark:text-emerald-400">GDPT 2018</div>
+          <div class="text-xs text-slate-500 dark:text-slate-400 mt-1 font-medium">Chuẩn hóa IUPAC & Thực tiễn</div>
+        </div>
+        <div class="glass-card rounded-2xl p-5 text-center">
+          <div class="text-2xl sm:text-3xl font-extrabold font-heading text-indigo-600 dark:text-indigo-400">8+ Modes</div>
+          <div class="text-xs text-slate-500 dark:text-slate-400 mt-1 font-medium">Công nghệ & Mini-Tools EdTech</div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- SCREEN 2: TAB GIẢNG DẠY (TEACHING / ACADEMIC PORTAL) -->
+    <!-- ================================================================= -->
+    <section id="screen-teaching" class="tab-screen space-y-12">
+      
+      <!-- TEACHING HERO -->
+      <div class="glass-panel rounded-3xl p-6 sm:p-10 border border-emerald-500/20 relative overflow-hidden bg-gradient-to-r from-emerald-500/5 via-teal-500/5 to-transparent">
+        <div class="max-w-2xl space-y-4">
+          <span class="text-xs font-mono font-bold tracking-wider text-emerald-600 dark:text-emerald-400 uppercase bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">
+            Góc Học Thuật & Đồng Hành Cùng Học Sinh
+          </span>
+          <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white font-heading">
+            Cùng Học Hóa Học — Hiểu Bản Chất & Tiếp Cận Chuẩn Quốc Tế
+          </h1>
+          <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+            Chào Quý Phụ huynh và các em Học sinh. Mình là <strong>Julies (Đức Hạo)</strong>, sinh viên năm nhất ngành Sư phạm Hóa học dạy bằng tiếng Anh tại Trường ĐH Sư phạm Hà Nội (K76 HNUE). Không gian này được tạo ra để chia sẻ góc nhìn khoa học, giúp các em củng cố nền tảng môn Hóa một cách nhẹ nhàng, hiểu gốc rễ vấn đề và tự tin làm quen với danh pháp quốc tế IUPAC.
+          </p>
+        </div>
+      </div>
+
+      <!-- TRIẾT LÝ HỌC TẬP (CORE PHILOSOPHY) -->
+      <div class="space-y-6">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold">1</div>
+          <h2 class="text-2xl font-bold text-slate-900 dark:text-white font-heading">Góc Nhìn Của Julies: Vì Sao Môn Hóa Thường Bị Coi Là Khó?</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="glass-card rounded-2xl p-6 border-l-4 border-rose-500 bg-rose-50/30 dark:bg-rose-950/10">
+            <h3 class="font-bold text-rose-600 dark:text-rose-400 text-lg mb-2 flex items-center gap-2">
+              <span>⚠️</span> Khi Bị Cuốn Vào Việc Học Vẹt
+            </h3>
+            <ul class="text-sm text-slate-600 dark:text-slate-300 space-y-2 list-disc list-inside">
+              <li>Cố gắng nhớ máy móc từng phương trình mà chưa rõ vì sao các chất lại tác dụng với nhau.</li>
+              <li>Học vẹt hóa trị mà chưa hiểu bản chất cấu hình electron hay vị trí trong bảng tuần hoàn.</li>
+              <li>Khi gặp tên gọi quốc tế mới (IUPAC) trong sách giáo khoa mới thì thấy lạ lẫm và ngại đọc.</li>
+            </ul>
+          </div>
+
+          <div class="glass-card rounded-2xl p-6 border-l-4 border-emerald-500 bg-emerald-50/30 dark:bg-emerald-950/10">
+            <h3 class="font-bold text-emerald-600 dark:text-emerald-400 text-lg mb-2 flex items-center gap-2">
+              <span>🌱</span> Cách Julies Cùng Bạn Gỡ Rối
+            </h3>
+            <ul class="text-sm text-slate-600 dark:text-slate-300 space-y-2 list-disc list-inside">
+              <li><strong>Bản chất liên kết:</strong> Cùng phân tích cách electron dịch chuyển để bạn tự suy luận được sản phẩm phản ứng một cách tự nhiên.</li>
+              <li><strong>Tư duy logic hệ thống:</strong> Kết nối các nhóm chất có cùng tính chất, giúp việc ghi nhớ trở nên có trật tự và nhẹ nhàng hơn.</li>
+              <li><strong>Ứng dụng công nghệ & Danh pháp chuẩn:</strong> Tận dụng các mini-tool tra cứu trực quan và luyện phát âm IUPAC chuẩn quốc tế ngay từ đầu.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- LỘ TRÌNH ĐỒNG HÀNH (ROADMAP) -->
+      <div class="space-y-6">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold">2</div>
+          <h2 class="text-2xl font-bold text-slate-900 dark:text-white font-heading">Lộ Trình Củng Cố Nền Tảng (Cấp 2 & Cấp 3)</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          
+          <!-- ROADMAP CẤP 2 -->
+          <div class="glass-card rounded-3xl p-6 border border-emerald-500/20">
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-mono font-bold px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+                THCS: Lớp 8 — Lớp 9
+              </span>
+              <span class="text-xs text-slate-400">Xây Móng & Làm Quen</span>
+            </div>
+            
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">
+              Làm Quen & Nắm Chắc Khái Niệm Cơ Bản
+            </h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">
+              Giúp các em bước đầu làm quen môn Khoa Học Tự Nhiên (phần Hóa học), hiểu rõ hạt nguyên tử, cách cân bằng phương trình và các hợp chất vô cơ quen thuộc.
+            </p>
+
+            <div class="space-y-3 text-sm">
+              <div class="p-3 rounded-xl bg-slate-100 dark:bg-slate-800/60">
+                <div class="font-semibold text-slate-900 dark:text-white text-xs">Chặng 1: Khái niệm nguyên tử & Định luật bảo toàn khối lượng</div>
+                <div class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Biết cách lập công thức hóa học, hiểu ý nghĩa của chỉ số và hệ số cân bằng.</div>
+              </div>
+              <div class="p-3 rounded-xl bg-slate-100 dark:bg-slate-800/60">
+                <div class="font-semibold text-slate-900 dark:text-white text-xs">Chặng 2: Phân loại hợp chất vô cơ (Oxide, Acid, Base, Salt)</div>
+                <div class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Hiểu tính chất hóa học thông qua bản chất phản ứng trao đổi ion.</div>
+              </div>
+              <div class="p-3 rounded-xl bg-slate-100 dark:bg-slate-800/60">
+                <div class="font-semibold text-slate-900 dark:text-white text-xs">Chặng 3: Làm quen danh pháp IUPAC theo SGK mới</div>
+                <div class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Đọc và nhận biết các đơn chất, hợp chất bằng tên tiếng Anh chuẩn mực.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ROADMAP CẤP 3 -->
+          <div class="glass-card rounded-3xl p-6 border border-emerald-500/20">
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-mono font-bold px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+                THPT: Lớp 10 — Lớp 11 — Lớp 12
+              </span>
+              <span class="text-xs text-slate-400">Đào Sâu Bản Chất</span>
+            </div>
+
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">
+              Nắm Vững Hóa Học Đại Cương & Hữu Cơ
+            </h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">
+              Từng bước gỡ rối các phần lý thuyết trọng tâm theo chương trình GDPT 2018: Cấu tạo nguyên tử, Năng lượng liên kết, Cân bằng hóa học và Hóa học Hữu cơ.
+            </p>
+
+            <div class="space-y-3 text-sm">
+              <div class="p-3 rounded-xl bg-slate-100 dark:bg-slate-800/60">
+                <div class="font-semibold text-slate-900 dark:text-white text-xs">Lớp 10: Cấu Tạo Nguyên Tử & Phản Ứng Oxi Hóa - Khử</div>
+                <div class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Hiểu orbital nguyên tử, biến thiên tuần hoàn và biến thiên enthalpy phản ứng ($\Delta_r H$).</div>
+              </div>
+              <div class="p-3 rounded-xl bg-slate-100 dark:bg-slate-800/60">
+                <div class="font-semibold text-slate-900 dark:text-white text-xs">Lớp 11: Cân Bằng Hóa Học & Nhập Môn Hóa Hữu Cơ</div>
+                <div class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Thuyết Bronsted-Lowry về Acid-Base, Hydrocarbon, Dẫn xuất Halogen, Alcohol & Hợp chất Carbonyl.</div>
+              </div>
+              <div class="p-3 rounded-xl bg-slate-100 dark:bg-slate-800/60">
+                <div class="font-semibold text-slate-900 dark:text-white text-xs">Lớp 12: Hóa Hữu Cơ Chuyên Sâu & Kim Loại Phức Chất</div>
+                <div class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Ester-Lipid, Carbohydrate, Hợp chất chứa Nitơ, Polyme và Sơ lược về phức chất.</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- INTERACTIVE TOOL: IUPAC NOMENCLATURE EXPLORER -->
+      <div class="space-y-6">
+        <div class="flex items-center justify-between flex-wrap gap-4">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold">3</div>
+            <div>
+              <h2 class="text-2xl font-bold text-slate-900 dark:text-white font-heading">Bảng Tra Cứu Danh Pháp IUPAC Tương Tác</h2>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Chuẩn hóa tên gọi Hóa học quốc tế theo chương trình GDPT 2018</p>
+            </div>
+          </div>
+
+          <div id="iupac-count-badge" class="text-xs font-mono font-semibold px-3 py-1 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+            12 chất
+          </div>
+        </div>
+
+        <!-- SEARCH & FILTER BAR -->
+        <div class="glass-card rounded-2xl p-4 flex flex-col sm:flex-row gap-3">
+          <div class="relative flex-grow">
+            <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400">🔍</span>
+            <input id="iupac-search-input" type="text" placeholder="Tìm theo tên cũ (etilen, axetilen), tên IUPAC (methane, ethanol), CTPT..." class="custom-input pl-10 text-sm">
+          </div>
+
+          <select id="iupac-category-filter" class="custom-input sm:w-56 text-sm font-medium">
+            <option value="all">Tất cả nhóm chất</option>
+            <option value="alkane">Alkane (No)</option>
+            <option value="alkene">Alkene (Nối đôi)</option>
+            <option value="alkyne">Alkyne (Nối ba)</option>
+            <option value="alcohol">Alcohol (Cồn/Rượu)</option>
+            <option value="aldehyde">Aldehyde (-CHO)</option>
+            <option value="carboxylic_acid">Carboxylic Acid (-COOH)</option>
+            <option value="ester">Ester (Mùi thơm)</option>
+            <option value="amine">Amine (Gốc Nitơ)</option>
+            <option value="aromatic">Arene (Vòng thơm)</option>
+          </select>
+        </div>
+
+        <!-- RESULTS GRID -->
+        <div id="iupac-results-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <!-- Populated dynamically by app.js -->
+        </div>
+      </div>
+
+      <!-- MINI TOOL: CHEMICAL EQUATION BALANCER -->
+      <div class="glass-card rounded-3xl p-6 sm:p-8 border border-emerald-500/20">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold">4</div>
+          <div>
+            <h2 class="text-xl font-bold text-slate-900 dark:text-white font-heading">Mini-Tool: Cân Bằng Phản Ứng & Phân Tích Bản Chất</h2>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Gõ thử các chất phản ứng để xem bản chất electron được Julies lập trình</p>
+          </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-3">
+          <input id="balancer-input" type="text" placeholder="Ví dụ: fe + hno3, al + h2so4, c2h5oh + o2, caco3..." class="custom-input text-sm">
+          <button id="balancer-submit-btn" class="px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm whitespace-nowrap shadow-sm transition-all">
+            ⚡ Phân Tích Ngay
+          </button>
+        </div>
+
+        <div id="balancer-result" class="mt-4 hidden transition-all">
+          <!-- Rendered dynamically -->
+        </div>
+      </div>
+
+      <!-- FORM ĐĂNG KÝ HỌC THỬ / TRAO ĐỔI -->
+      <div class="glass-panel rounded-3xl p-6 sm:p-10 border border-emerald-500/30 relative overflow-hidden bg-gradient-to-b from-white to-emerald-50/50 dark:from-slate-900 dark:to-emerald-950/30">
+        <div class="max-w-2xl mx-auto space-y-6">
+          <div class="text-center space-y-2">
+            <span class="text-xs font-mono font-bold tracking-wider text-emerald-600 dark:text-emerald-400 uppercase bg-emerald-500/10 px-3 py-1 rounded-full">
+              Kết Nối & Trao Đổi
+            </span>
+            <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white font-heading">
+              Đăng Ký Học Thử 1-1 & Trao Đổi Cùng Julies
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+              Phụ huynh hoặc học sinh vui lòng để lại thông tin liên hệ. Julies sẽ phản hồi qua Zalo/Điện thoại để lắng nghe tình hình học tập và cùng sắp xếp một buổi học thử trao đổi trực tiếp hoàn toàn miễn phí.
+            </p>
+          </div>
+
+          <form id="trial-booking-form" class="space-y-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Họ và tên Học sinh / Phụ huynh *</label>
+                <input id="form-name" type="text" required placeholder="Ví dụ: Nguyễn Minh Anh" class="custom-input text-sm">
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Số điện thoại / Zalo liên hệ *</label>
+                <input id="form-phone" type="tel" required placeholder="Ví dụ: 0987xxxxxx" class="custom-input text-sm">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Khối lớp hiện tại</label>
+                <select id="form-grade" class="custom-input text-sm font-medium">
+                  <option value="Lớp 8">Lớp 8 (Mới bắt đầu làm quen)</option>
+                  <option value="Lớp 9">Lớp 9 (Củng cố nền tảng vào 10)</option>
+                  <option value="Lớp 10">Lớp 10 (Chương trình mới GDPT 2018)</option>
+                  <option value="Lớp 11">Lớp 11 (Hóa Hữu cơ nền tảng)</option>
+                  <option value="Lớp 12">Lớp 12 (Tổng ôn kiến thức THPT)</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Mong muốn học tập</label>
+                <select id="form-goal" class="custom-input text-sm font-medium">
+                  <option value="Lấy lại căn bản (Mất gốc)">Củng cố lại căn bản (Gỡ rối kiến thức)</option>
+                  <option value="Hiểu bài trên lớp tốt hơn">Hiểu bài & tự tin hơn trên lớp</option>
+                  <option value="Làm quen Danh pháp tiếng Anh IUPAC">Làm quen Danh pháp tiếng Anh IUPAC</option>
+                  <option value="Ôn tập có phương pháp">Học phương pháp tư duy bản chất</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Chia sẻ thêm về tình trạng học tập</label>
+              <textarea id="form-note" rows="3" placeholder="Ví dụ: Em còn lúng túng phần cân bằng electron, muốn trao đổi thêm về cách học Hóa hiệu quả..." class="custom-input text-sm"></textarea>
+            </div>
+
+            <button type="submit" class="w-full py-4 rounded-2xl font-bold text-white bg-emerald-600 hover:bg-emerald-500 shadow-lg shadow-emerald-600/30 transition-all text-sm flex items-center justify-center gap-2">
+              <span>📩</span> Gửi Thông Tin Cho Julies
+            </button>
+          </form>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- SCREEN 3: TAB DỰ ÁN SỐ (CODE & APPS LAB) -->
+    <!-- ================================================================= -->
+    <section id="screen-projects" class="tab-screen space-y-12">
+      
+      <!-- PROJECTS HERO -->
+      <div class="glass-panel rounded-3xl p-6 sm:p-10 border border-indigo-500/20 relative overflow-hidden bg-gradient-to-r from-indigo-500/5 via-violet-500/5 to-transparent">
+        <div class="max-w-2xl space-y-4">
+          <span class="text-xs font-mono font-bold tracking-wider text-indigo-600 dark:text-indigo-400 uppercase bg-indigo-500/10 px-3 py-1 rounded-full border border-indigo-500/20">
+            Software Showcase & EdTech Lab
+          </span>
+          <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white font-heading">
+            Phòng Thí Nghiệm Số & Sản Phẩm Phần Mềm
+          </h1>
+          <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+            Nơi trưng bày các ứng dụng và mini-tool do Julies tự tay thiết kế kiến trúc và lập trình. Mỗi dự án đều tập trung giải quyết bài toán thực tế của người học với trải nghiệm UI/UX mượt mà.
+          </p>
+        </div>
+      </div>
+
+      <!-- FILTER BUTTONS -->
+      <div class="flex flex-wrap items-center gap-2">
+        <button class="project-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-indigo-600 text-white shadow-sm transition-all" data-filter="all">
+          Tất Cả Sản Phẩm
+        </button>
+        <button class="project-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-indigo-500/20 transition-all" data-filter="edtech">
+          EdTech & Ngôn Ngữ
+        </button>
+        <button class="project-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-indigo-500/20 transition-all" data-filter="chemistry">
+          Công Cụ Hóa Học
+        </button>
+        <button class="project-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-indigo-500/20 transition-all" data-filter="web">
+          Web Tools
+        </button>
+      </div>
+
+      <!-- FEATURED PROJECT: VOCAFLOW -->
+      <div class="project-card" data-category="edtech">
+        <div class="glass-card rounded-3xl p-6 sm:p-10 border border-indigo-500/30 relative overflow-hidden bg-gradient-to-b from-white to-indigo-50/50 dark:from-slate-900 dark:to-indigo-950/40">
+          <div class="flex flex-col lg:flex-row gap-8 items-center">
+            
+            <div class="space-y-4 flex-1">
+              <div class="flex items-center gap-2">
+                <span class="text-xs font-mono font-bold px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20">
+                  FLAGSHIP PROJECT
+                </span>
+                <span class="text-xs font-mono font-bold px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+                  v1.0-0 Production Ready
+                </span>
+              </div>
+
+              <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white font-heading">
+                VocaFlow — Nền Tảng Học Từ Vựng Đa Nền Tảng & AI Speaking Lab
+              </h2>
+
+              <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                Ứng dụng học từ vựng tiếng Anh cá nhân hóa với thuật toán <strong>Lặp lại ngắt quãng (SRS)</strong> kết hợp <strong>Speaking Engine AI âm vị quốc tế IPA chuẩn Oxford</strong> (tích hợp Microsoft Azure AI Speech & Google Gemini Multimodal). Hoạt động Offline 100% không cần mạng với kiến trúc Service Worker PWA và Game Economy Unified Balance v4.
+              </p>
+
+              <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 pt-2">
+                <div class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800/80 text-xs">
+                  <div class="font-bold text-slate-900 dark:text-white">🎙️ Speaking Lab</div>
+                  <div class="text-[11px] text-slate-400">Azure REST & Gemini</div>
+                </div>
+                <div class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800/80 text-xs">
+                  <div class="font-bold text-slate-900 dark:text-white">⚡ 8 Chế Độ Học</div>
+                  <div class="text-[11px] text-slate-400">Quiz, Spelling, Dictation...</div>
+                </div>
+                <div class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800/80 text-xs">
+                  <div class="font-bold text-slate-900 dark:text-white">🎮 Game Economy</div>
+                  <div class="text-[11px] text-slate-400">Study EXP & Soft-Cap</div>
+                </div>
+              </div>
+
+              <div class="flex flex-wrap gap-3 pt-4">
+                <a href="https://iamjulies.github.io/VocaFlow" target="_blank" rel="noopener noreferrer" class="px-5 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs shadow-md shadow-indigo-600/30 flex items-center gap-1.5 transition-all">
+                  <span>🚀</span> Dùng Thử Web App Trực Tiếp
+                </a>
+                <button onclick="showToast('📦 Bản Windows Portable v1.0-0 có sẵn tại repo GitHub!')" class="px-5 py-3 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 hover:bg-slate-300 dark:hover:bg-slate-700 font-bold text-xs flex items-center gap-1.5 transition-all">
+                  <span>💾</span> Tải Windows (.zip)
+                </button>
+              </div>
+            </div>
+
+            <!-- MOCKUP PREVIEW -->
+            <div class="w-full lg:w-80 h-72 rounded-2xl bg-gradient-to-tr from-slate-900 to-indigo-950 p-4 border border-indigo-500/30 flex flex-col justify-between shadow-2xl relative overflow-hidden">
+              <div class="flex items-center justify-between border-b border-indigo-500/20 pb-2">
+                <span class="text-xs font-mono text-indigo-400 font-bold">VocaFlow Studio</span>
+                <span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400">● LIVE</span>
+              </div>
+              
+              <div class="text-center my-auto space-y-2">
+                <div class="text-3xl font-extrabold text-white font-heading">ubiquitous</div>
+                <div class="text-xs font-mono text-indigo-300">/juːˈbɪk.wɪ.təs/</div>
+                <div class="text-xs text-slate-400 italic">"phổ biến, có mặt ở khắp mọi nơi"</div>
+                <div class="inline-flex items-center gap-1 text-[11px] px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300">
+                  <span>🎯 Accuracy: 98% (Oxford IPA)</span>
+                </div>
+              </div>
+
+              <div class="text-[10px] text-center text-slate-500 font-mono">
+                Clean Architecture & Offline PWA
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- OTHER PROJECTS GRID -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- PROJECT 2: IUPAC CHEMHELPER -->
+        <div class="project-card glass-card rounded-2xl p-6 border border-slate-200 dark:border-slate-800 flex flex-col justify-between" data-category="chemistry">
+          <div>
+            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-lg mb-4">
+              🧪
+            </div>
+            <span class="text-xs font-mono text-emerald-500 font-semibold">Chemistry Mini-Tool</span>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white mt-1 mb-2">IUPAC Nomenclature Engine</h3>
+            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+              Công cụ phân tích cấu trúc và đọc tên các hợp chất hữu cơ theo quy tắc IUPAC mới nhất của Bộ GD&ĐT. Có phát âm IPA chuẩn.
+            </p>
+          </div>
+          <a href="#teaching" data-route="teaching" class="text-xs font-bold text-emerald-600 dark:text-emerald-400 hover:underline flex items-center gap-1">
+            <span>Dùng thử trong tab Học Thuật</span> →
+          </a>
+        </div>
+
+        <!-- PROJECT 3: CHEMBALANCE PRO -->
+        <div class="project-card glass-card rounded-2xl p-6 border border-slate-200 dark:border-slate-800 flex flex-col justify-between" data-category="chemistry">
+          <div>
+            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-lg mb-4">
+              ⚡
+            </div>
+            <span class="text-xs font-mono text-emerald-500 font-semibold">Chemistry Mini-Tool</span>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white mt-1 mb-2">ChemBalance Electron Solver</h3>
+            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+              Bộ giải phương trình hóa học và trực quan hóa quá trình dịch chuyển electron (chất khử - chất oxi hóa) từng bước.
+            </p>
+          </div>
+          <a href="#teaching" data-route="teaching" class="text-xs font-bold text-emerald-600 dark:text-emerald-400 hover:underline flex items-center gap-1">
+            <span>Dùng thử trong tab Học Thuật</span> →
+          </a>
+        </div>
+
+        <!-- PROJECT 4: VOCACARD GENERATOR -->
+        <div class="project-card glass-card rounded-2xl p-6 border border-slate-200 dark:border-slate-800 flex flex-col justify-between" data-category="edtech">
+          <div>
+            <div class="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 flex items-center justify-center text-lg mb-4">
+              🗂️
+            </div>
+            <span class="text-xs font-mono text-indigo-500 font-semibold">EdTech Tool</span>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white mt-1 mb-2">VocaCard Flashcard Creator</h3>
+            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+              Công cụ tạo thẻ ghi nhớ flashcard song ngữ và thuật ngữ Hóa học, hỗ trợ xuất file Excel và đồng bộ bộ từ vựng.
+            </p>
+          </div>
+          <a href="https://iamjulies.github.io/VocaFlow" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1">
+            <span>Tích hợp trong VocaFlow</span> →
+          </a>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- SCREEN 4: TAB VỀ TỚ (ABOUT & CONNECT) -->
+    <!-- ================================================================= -->
+    <section id="screen-about" class="tab-screen space-y-12">
+      
+      <!-- ABOUT HERO & STORY -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        <!-- PROFILE CARD -->
+        <div class="glass-card rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 text-center flex flex-col items-center justify-between">
+          <div class="space-y-4">
+            <div class="w-28 h-28 rounded-3xl bg-gradient-to-tr from-emerald-500 via-teal-500 to-indigo-600 p-1 shadow-xl">
+              <div class="w-full h-full rounded-[22px] bg-slate-900 flex items-center justify-center text-4xl text-white">
+                👨‍🏫
+              </div>
+            </div>
+
+            <div>
+              <h2 class="text-2xl font-bold text-slate-900 dark:text-white font-heading">Nông Đức Hạo</h2>
+              <p class="text-sm font-bold text-emerald-600 dark:text-emerald-400 font-mono mt-0.5">Julies (iamjulies)</p>
+              
+              <div class="mt-3 p-3 rounded-2xl bg-slate-100 dark:bg-slate-800/80 text-xs space-y-1 text-left font-medium">
+                <div class="flex items-center gap-1.5 text-slate-700 dark:text-slate-300">
+                  <span>🏛️</span> <strong>Trường:</strong> ĐH Sư Phạm Hà Nội (HNUE)
+                </div>
+                <div class="flex items-center gap-1.5 text-slate-700 dark:text-slate-300">
+                  <span>🧪</span> <strong>Ngành:</strong> Sư phạm Hóa học dạy bằng tiếng Anh
+                </div>
+                <div class="flex items-center gap-1.5 text-slate-700 dark:text-slate-300">
+                  <span>🎓</span> <strong>Khóa:</strong> K76 (Năm thứ nhất)
+                </div>
+              </div>
+            </div>
+
+            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed text-justify">
+              "Mình là sinh viên năm nhất đang theo học ngành Sư phạm Hóa tiếng Anh tại ĐHSPHN. Mình đam mê học hỏi phương pháp sư phạm hiện đại, chuẩn hóa danh pháp quốc tế và tìm tòi viết code để tạo ra những công cụ học tập hữu ích."
+            </p>
+          </div>
+
+          <div class="w-full pt-6 border-t border-slate-200 dark:border-slate-800 space-y-2">
+            <button onclick="copyContactInfo('iamjulies.contact@gmail.com', 'Email')" class="w-full py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-xs font-semibold hover:bg-slate-200 dark:hover:bg-slate-700 transition-all flex items-center justify-center gap-1.5">
+              <span>📧</span> Copy Email: iamjulies.contact@gmail.com
+            </button>
+            <a href="https://github.com/iamjulies" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-xl bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 text-xs font-semibold hover:opacity-90 transition-all flex items-center justify-center gap-1.5">
+              <span>🐙</span> GitHub: @iamjulies
+            </a>
+          </div>
+        </div>
+
+        <!-- STORY & BALANCE PERSPECTIVE -->
+        <div class="lg:col-span-2 space-y-6">
+          <div class="glass-card rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 space-y-4">
+            <span class="text-xs font-mono font-bold tracking-wider text-emerald-600 dark:text-emerald-400 uppercase bg-emerald-500/10 px-3 py-1 rounded-full">
+              Hành Trình & Góc Nhìn
+            </span>
+            <h3 class="text-2xl font-bold text-slate-900 dark:text-white font-heading">
+              Giao Thoa Giữa Bảng Phấn & Dòng Lệnh
+            </h3>
+            <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              Là một sinh viên năm nhất ngành <strong>Sư phạm Hóa học dạy bằng tiếng Anh (K76 ĐHSPHN)</strong>, mình vừa trau dồi kiến thức chuyên môn Hóa học và tiếng Anh học thuật, vừa dành thời gian nghiên cứu lập trình các công cụ số như VocaFlow.
+            </p>
+            <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              Dù kinh nghiệm giảng dạy thực tế chưa nhiều, mình luôn giữ tinh thần cầu tiến, lắng nghe và đặt sự tận tâm lên hàng đầu. Mỗi buổi học cùng học sinh là một cơ hội để mình rèn luyện kỹ năng truyền đạt, cùng các em khám phá vẻ đẹp logic của từng phản ứng hóa học.
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+              <div class="p-4 rounded-2xl bg-emerald-500/5 border border-emerald-500/20">
+                <h4 class="font-bold text-sm text-emerald-600 dark:text-emerald-400 mb-1">🌿 Sư Phạm (Pedagogy)</h4>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Kiến thức chuyên môn Hóa học, phương pháp giảng dạy bằng tiếng Anh, chuẩn hóa IUPAC GDPT 2018.</p>
+              </div>
+              <div class="p-4 rounded-2xl bg-indigo-500/5 border border-indigo-500/20">
+                <h4 class="font-bold text-sm text-indigo-600 dark:text-indigo-400 mb-1">⚡ Công Nghệ (Tech)</h4>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Lập trình Web/PWA, ứng dụng AI Speech Recognition (Azure & Gemini), thiết kế giao diện trực quan.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- MUSIC PLAYLIST / SPOTIFY CHILL -->
+          <div class="glass-card rounded-3xl p-6 border border-slate-200 dark:border-slate-800 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 text-emerald-500 flex items-center justify-center text-2xl">
+                🎵
+              </div>
+              <div>
+                <div class="text-sm font-bold text-slate-900 dark:text-white font-heading">Study & Code Soundtracks</div>
+                <div class="text-xs text-slate-500 dark:text-slate-400">Lofi Beats, Piano nhẹ nhàng khi học bài và gõ code</div>
+              </div>
+            </div>
+
+            <button onclick="showToast('🎧 Gợi ý Playlist: Lofi Girl Study & Chill Beats!')" class="px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-xs font-semibold hover:bg-slate-200 dark:hover:bg-slate-700 transition-all">
+              Khám phá ▶
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="glass-panel border-t border-slate-200/80 dark:border-slate-800/80 py-8 px-4 text-center text-xs text-slate-500 dark:text-slate-400">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        © 2026 <strong>Julies (Nông Đức Hạo)</strong>. K76 Sư phạm Hóa học tiếng Anh — ĐH Sư Phạm Hà Nội.
+      </div>
+      <div class="flex items-center gap-3 text-slate-400">
+        <span class="px-2 py-0.5 rounded-md bg-slate-200 dark:bg-slate-800 text-[11px] font-mono font-semibold text-emerald-600 dark:text-emerald-400">v1.0.0 (Build 2)</span>
+        <span>•</span>
+        <a href="#home" data-route="home" class="hover:text-emerald-500">Trang Chủ</a>
+        <a href="#teaching" data-route="teaching" class="hover:text-emerald-500">Học Thuật</a>
+        <a href="#projects" data-route="projects" class="hover:text-indigo-500">Dự Án Số</a>
+        <a href="#about" data-route="about" class="hover:text-emerald-500">Về Julies</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL: BOOKING SUCCESS -->
+  <div id="modal-booking-success" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+    <div class="glass-panel max-w-md w-full rounded-3xl p-6 sm:p-8 border border-emerald-500/40 text-center space-y-4 shadow-2xl bg-white dark:bg-slate-900">
+      <div class="w-16 h-16 rounded-full bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 flex items-center justify-center text-3xl mx-auto">
+        🎉
+      </div>
+
+      <h3 class="text-2xl font-bold text-slate-900 dark:text-white font-heading">
+        Đã Gửi Thông Tin Thành Công!
+      </h3>
+
+      <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+        Cảm ơn bạn <strong id="success-student-name" class="text-emerald-600 dark:text-emerald-400"></strong> (<span id="success-student-grade"></span>) đã quan tâm. Julies đã nhận được thông tin và sẽ liên hệ lại qua số điện thoại/Zalo <strong id="success-student-phone" class="font-mono"></strong> để trao đổi chi tiết nhé!
+      </p>
+
+      <div class="p-3 rounded-2xl bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 text-xs font-medium text-left">
+        💡 <em>Trong lúc chờ đợi, bạn có thể trải nghiệm trước Bảng tra cứu IUPAC hoặc làm quen với ứng dụng VocaFlow!</em>
+      </div>
+
+      <button onclick="closeBookingSuccessModal()" class="w-full py-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-lg shadow-emerald-600/30 transition-all">
+        Đồng Ý & Quay Lại Trang
+      </button>
+    </div>
+  </div>
+
+  <!-- Core JavaScript -->
+  <script src="app.js"></script>
+</body>
+</html>

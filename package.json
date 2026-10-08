@@ -1,0 +1,11 @@
+{
+  "name": "julies-website",
+  "version": "1.0.0-build.2",
+  "description": "Website cá nhân của Julies (Nông Đức Hạo) - K76 Sư phạm Hóa học tiếng Anh ĐHSPHN & EdTech Creator",
+  "author": "Julies (Nông Đức Hạo)",
+  "homepage": "https://iamjulies.me",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iamjulies/julieswebsite.git"
+  }
+}

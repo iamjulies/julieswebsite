@@ -1,0 +1,12 @@
+# Git Security & Sensitive Files
+.git_token
+*.token
+.env
+.env.*
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
